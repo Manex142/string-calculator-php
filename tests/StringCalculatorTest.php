@@ -12,26 +12,30 @@ final class StringCalculatorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->calculator = new StringCalculator();
+        $this->stringCalculator = new StringCalculator();
     }
 
     /**
      * @test
      */
-    public function givenEmptyStringReturns0()
+    public function givenEmptyStringReturns0(): void
     {
-        $result = $this->calculator->add("");
-
-        $this->assertEquals(0, $result);
+        $this->assertEquals(0, $this->stringCalculator->add(""));
     }
 
     /**
      * @test
      */
-    public function givenOneNumberReturnsNumber()
+    public function givenSingleNumberReturnsSameNumber(): void
     {
-        $result = $this->calculator->Add("1");
+        $this->assertEquals(1, $this->stringCalculator->add('1'));
+    }
 
-        $this->assertEquals(1, $result);
+    /**
+     * @test
+     */
+    public function givenTwoNumbersReturnsTheirSum(): void
+    {
+        $this->assertEquals(3, $this->stringCalculator->add('1,2'));
     }
 }

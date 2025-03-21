@@ -6,7 +6,10 @@ class StringCalculator
 {
     public function add(string $numbers): int
     {
-        if ($numbers === '1') return 1;
-        return 0;
+        if (strpos($numbers, ',')) {
+            return array_sum(explode(',', $numbers));
+        }
+        if (empty($numbers)) return 0;
+        return $numbers;
     }
 }
