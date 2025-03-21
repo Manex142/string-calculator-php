@@ -24,4 +24,14 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(0, $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenOneNumberReturnsNumber()
+    {
+        $result = $this->calculator->Add("1");
+
+        $this->assertEquals(1, $result);
+    }
 }
