@@ -34,8 +34,24 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function givenTwoNumbersReturnsTheirSum(): void
+    public function givenNumbersSeparatedByCommasReturnsTheirSum(): void
     {
-        $this->assertEquals(3, $this->stringCalculator->add('1,2'));
+        $this->assertEquals(6, $this->stringCalculator->add('1,2,3'));
+    }
+
+    /**
+     * @test
+     */
+    public function givenNumbersSeparatedByLineBreakReturnsTheirSum(): void
+    {
+        $this->assertEquals(6, $this->stringCalculator->add('1\n2\n3'));
+    }
+
+    /**
+     * @test
+     */
+    public function givenNumbersSeparatedByCommasAndLineBreakReturnsTheirSum(): void
+    {
+        $this->assertEquals(6, $this->stringCalculator->add('1,2\n3'));
     }
 }
