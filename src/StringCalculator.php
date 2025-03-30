@@ -6,11 +6,20 @@ class StringCalculator
 {
     public function add(string $numbers): int
     {
+        if (empty($numbers)) return 0;
+
         $numbers = str_replace('\n', ',', $numbers);
-        if (strpos($numbers, ',')) {
+
+        if (str_contains($numbers, '//')) {
+            $delimiter = substr($numbers, 2, 1);
+            $numbers = str_replace(['//' . $delimiter . '\n', $delimiter], ['', ','], $numbers);
+
             return array_sum(explode(',', $numbers));
         }
-        if (empty($numbers)) return 0;
+
+        if (str_contains($numbers, ',')) {
+            return array_sum(explode(',', $numbers));
+        }
         return $numbers;
     }
 }
